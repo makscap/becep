@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import s from './ArticlesSection.module.css';
 
 const ArticlesSection = () => {
-  const [data, setData] = useState([1, 2, 3, 4, 5, 6]);
+  const [data, setData] = useState(null);
   const [visible, setVisible] = useState(3);
   const TOPIC_NAME = 'Vízia 0';
 
@@ -27,21 +27,22 @@ const ArticlesSection = () => {
       <h2 className={s.title}>Najnovšie články</h2>
 
       <ul className={s.articlesSection}>
-        {data.slice(0, visible).map((el, i) => (
-          <li className={s.item} key={el.id}>
-            <Link to={`/actuality/activity/${el.id}`} className={s.link}>
-              <img src={el.imageUrl} alt="article" width="300px"></img>
-              <p className={s.dateLabel}>{`${'date'} - ${TOPIC_NAME}`}</p>
-              <p className={s.itemTitle}>{el.name}</p>
-              <p className={s.text}>
-                Deň 29.9.2017 bol venovaný Noci výskumníkov v mestách Bratislava, Žilina, Banská
-                Bystrica, Poprad a Košice. Oddelenie BECEP v spolupráci s PRIBINA pripravilo pre
-                záujemcovi "Iný pohľad na cestu" a rozdávali sa aj reflexné predmety ako aj iné
-                vzdelávacie pomôcky pre bezpečný pohyb v cestnej premávke.
-              </p>
-            </Link>
-          </li>
-        ))}
+        {data &&
+          data.slice(0, visible).map((el, i) => (
+            <li className={s.item} key={el.id}>
+              <Link to={`/actuality/activity/${el.id}`} className={s.link}>
+                <img src={el.imageUrl} alt="article" width="300px"></img>
+                <p className={s.dateLabel}>{`${'date'} - ${TOPIC_NAME}`}</p>
+                <p className={s.itemTitle}>{el.name}</p>
+                <p className={s.text}>
+                  Deň 29.9.2017 bol venovaný Noci výskumníkov v mestách Bratislava, Žilina, Banská
+                  Bystrica, Poprad a Košice. Oddelenie BECEP v spolupráci s PRIBINA pripravilo pre
+                  záujemcovi "Iný pohľad na cestu" a rozdávali sa aj reflexné predmety ako aj iné
+                  vzdelávacie pomôcky pre bezpečný pohyb v cestnej premávke.
+                </p>
+              </Link>
+            </li>
+          ))}
       </ul>
 
       <button onClick={getMoreArticles} className={s.btn}>
