@@ -1,0 +1,98 @@
+.title {
+    color: #65A345;
+    text-align: start;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+font-size: 36px;
+line-height: 40px;
+padding: 0px;
+margin: 0px;
+    margin-top: 68px;
+}
+
+.articlesSection {
+display: flex;
+flex-wrap: wrap;
+list-style: none;
+padding: 0px;
+margin: 0px;
+margin-top: 39px;
+margin-bottom: 57px;
+}
+
+.link {
+    text-decoration: none;
+
+}
+
+.item {
+text-align: start;
+width: 300px;
+margin-right: 33px;
+margin-bottom: 10px;
+}
+
+.item:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.dateLabel {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #626A6E;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.itemTitle {
+font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #00703C;
+}
+
+.itemTitle:hover {
+    cursor: pointer;
+}
+
+
+.text {
+    overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+        font-family: 'Source Sans Pro';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            color: #0B0C0C;
+            padding: 0px;
+            margin: 0px;
+}
+
+
+.btn {
+    font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 25px;
+        text-decoration-line: underline;
+        color: #00703C;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-bottom: 58px;
+
+}
