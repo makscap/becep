@@ -43,7 +43,7 @@ const ActivityView = () => {
         </li>
         <li className={s.linkItem}>
           <Link to="/" className={s.linkUrl}>
-            Home
+            Domov
           </Link>
         </li>
 

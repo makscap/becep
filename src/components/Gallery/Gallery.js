@@ -13,8 +13,10 @@ const images = [
 const Gallery = ({ article }) => {
   const [currentPageWithPhotos, setCurrentPageWithPhotos] = useState(0);
   const [photosPerPage, setPhotosPerPage] = useState(3);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [position, setPosition] = useState(0);
+
+  let lenghtImg = images.length;
 
   const escFunction = useCallback(event => {
     if (event.keyCode === 27) {
@@ -32,12 +34,6 @@ const Gallery = ({ article }) => {
 
   const currentProduct = images.slice(currentPageWithPhotos, photosPerPage);
   const paginate = pageNumber => setCurrentPageWithPhotos(pageNumber);
-  const pageNumbers = [];
-  const page = Math.ceil(images.length);
-
-  for (let i = 1; i <= page; i++) {
-    pageNumbers.push(i);
-  }
 
   const lastPhoto = photos => {
     if (photos >= 1) {
@@ -50,8 +46,6 @@ const Gallery = ({ article }) => {
 
   const nextPhoto = photos => {
     if (photos + 3 < images.length) {
-      console.log(photosPerPage);
-      console.log(currentPageWithPhotos);
       setPhotosPerPage(() => photosPerPage + 1);
       setCurrentPageWithPhotos(() => currentPageWithPhotos + 1);
       return currentProduct;
@@ -75,21 +69,16 @@ const Gallery = ({ article }) => {
 
   const showHideClassName = showModal ? s.overlay : s.closeModal;
 
-  const [ind, setInd] = useState(null);
-
   const goToPrevImg = e => {
-    if (ind >= 0) {
-      setInd(ind - 1);
-      setSelectedPhoto(images[ind]);
+    if (position >= 1) {
+      setPosition(position - 1);
     }
   };
 
   const goToNextImg = e => {
-    if (ind < images.length) {
-      setInd(ind + 1);
-      setSelectedPhoto(images[ind]);
+    if (position + 1 < lenghtImg) {
+      setPosition(position + 1);
     }
-    return images.filter(e => e + 1);
   };
 
   return (
@@ -108,10 +97,8 @@ const Gallery = ({ article }) => {
                   height="187px"
                   className={s.photo}
                   onClick={e => {
-                    setInd(i);
-                    setSelectedPhoto(e.target.src);
+                    setPosition(i);
                     openModal();
-                    console.log('click', ind);
                   }}
                 />
               ))}
@@ -121,7 +108,6 @@ const Gallery = ({ article }) => {
               onClick={e => {
                 e.preventDefault();
                 paginate(lastPhoto);
-                // lastPhoto(e);
               }}
             >
               <svg
@@ -141,7 +127,6 @@ const Gallery = ({ article }) => {
               onClick={e => {
                 e.preventDefault();
                 paginate(nextPhoto);
-                nextPhoto(e);
               }}
               className={s.btnRight}
             >
@@ -165,8 +150,8 @@ const Gallery = ({ article }) => {
         <div className={showHideClassName} onClick={onCloseModalOnOverlay}>
           <section className={s.modal}>
             <img
-              src={selectedPhoto}
-              alt={selectedPhoto}
+              src={images[position]}
+              alt={images[position]}
               // width="748px" height="465px"
               className={s.photoInModal}
             ></img>
