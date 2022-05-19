@@ -1,4 +1,68 @@
 .paginate {
-  display: flex; 
-  justify-content: center; 
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 46px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #DEE0E2;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.item:last-child {
+  margin-right: 0px;
+}
+
+.itemActive {
+  border: 1px solid #DEE0E2;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  text-decoration: none;
+  background-color: #204E2E;
+}
+
+.link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0B0C0C;
+  text-decoration: none;
+}
+
+.linkActive {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.svg {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: #BFC1C3
+}
+
+.svg:focus, .svg:hover {
+  fill: #000000;
 }

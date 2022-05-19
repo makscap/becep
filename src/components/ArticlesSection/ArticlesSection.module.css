@@ -96,3 +96,52 @@ font-family: 'Source Sans Pro';
         margin-bottom: 58px;
 
 }
+
+
+
+/* Menu styles */
+
+.linkList {
+    border: 1px solid tomato;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 25px;
+    color: #0B0C0C;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+
+
+}
+
+
+.linkItem {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 37px;
+    margin-left: 9.86px;
+    margin-right: 12.67px;
+    margin-bottom: 27px;
+}
+
+.linkItem:nth-child(1) {
+    margin-left: 9.86px;
+}
+
+.linkUrl {
+    color: #0B0C0C;
+}
+
+.linkNameOfTopic {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 25px;
+    color: #0B0C0C;
+    margin: 0px;
+    padding: 0px;
+}

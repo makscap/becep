@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import s from './ArticlesSection.module.css';
+import s from '../ActivityView/ActivityView.module.css';
+import News from '../News/News';
+import Pagination from '../Pagination/Pagination';
 
-const ArticlesSection = () => {
-  const [data, setData] = useState(null);
-  const [visible, setVisible] = useState(3);
-  const TOPIC_NAME = 'Vízia 0';
+const ActivityView = () => {
+  const [allArticles, setAllArticles] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1); // Pagination
+  const [productsPerPage] = useState(4); // Pagination
+
+  const TOPIC_NAME = 'Activity';
 
   useEffect(() => {
-    fetch('https://product-shop-api.herokuapp.com/product')
+    fetch(`https://product-shop-api.herokuapp.com/product/`)
       .then(r => r.json())
-      .then(data => {
-        setData(data);
-      })
+      .then(setAllArticles)
       .catch(err => {
         console.log(err);
       });
   }, []);
 
-  const getMoreArticles = () => {
-    setVisible(prev => prev + 3);
-  };
-
+  const lastProductIndex = currentPage * productsPerPage; // Pagination
+  const firstProductIndex = lastProductIndex - productsPerPage; // Pagination
+  const currentProduct = allArticles?.slice(firstProductIndex, lastProductIndex); // Pagination
+  const paginate = pageNumber => setCurrentPage(pageNumber); // Pagination
   return (
     <div className="container">
       <ul className={s.linkList}>
@@ -86,47 +88,20 @@ const ArticlesSection = () => {
             Activity
           </Link>
         </li>
-
-        <li className={s.linkItem}>
-          <svg
-            width="8"
-            height="13"
-            viewBox="0 0 8 13"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0.919912 12.5067C1.24658 12.8334 1.77325 12.8334 2.09991 12.5067L7.63991 6.9667C7.89991 6.7067 7.89991 6.2867 7.63991 6.0267L2.09991 0.486699C1.77325 0.160033 1.24658 0.160033 0.919912 0.486699C0.593245 0.813366 0.593245 1.34003 0.919912 1.6667L5.74658 6.50003L0.913245 11.3334C0.593245 11.6534 0.593245 12.1867 0.919912 12.5067Z"
-              fill="#0B0C0C"
-            />
-          </svg>
-        </li>
       </ul>
 
-      <h2 className={s.title}>Najnovšie články</h2>
-      <ul className={s.articlesSection}>
-        {data &&
-          data.slice(0, visible).map((el, i) => (
-            <li className={s.item} key={el.id}>
-              <Link to={`/actuality/activity/${el.id}`} className={s.link}>
-                <img src={el.imageUrl} alt="article" width="300px"></img>
-                <p className={s.dateLabel}>{`${'date'} - ${TOPIC_NAME}`}</p>
-                <p className={s.itemTitle}>{el.name}</p>
-                <p className={s.text}>
-                  Deň 29.9.2017 bol venovaný Noci výskumníkov v mestách Bratislava, Žilina, Banská
-                  Bystrica, Poprad a Košice. Oddelenie BECEP v spolupráci s PRIBINA pripravilo pre
-                  záujemcovi "Iný pohľad na cestu" a rozdávali sa aj reflexné predmety ako aj iné
-                  vzdelávacie pomôcky pre bezpečný pohyb v cestnej premávke.
-                </p>
-              </Link>
-            </li>
-          ))}
-      </ul>
-      <button onClick={getMoreArticles} className={s.btn}>
-        Ďalšie články
-      </button>
+      <h2 className={s.title}>{TOPIC_NAME}</h2>
+      {allArticles && <News articles={currentProduct} topicName={TOPIC_NAME} />}
+      {allArticles && (
+        <Pagination
+          productsPerPage={productsPerPage}
+          totalProducts={allArticles.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      )}
     </div>
   );
 };
 
-export default ArticlesSection;
+export default ActivityView;

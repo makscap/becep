@@ -1,0 +1,185 @@
+.title {
+    text-align: left;
+    font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 40px;
+        color: #65A345;
+}
+
+.section {
+    display: flex;
+    /* flex-direction: column;
+    background-color: aqua; */
+}
+
+
+
+.photoBlock {
+    margin-right: 50px;
+}
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dateLabel {
+font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #626A6E;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        text-decoration-line: underline;
+        color: #00703C;
+        padding: 0px;
+        margin: 0px;
+        margin-bottom: 10px;
+}
+
+.text {
+    text-align: left;
+    font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 25px;
+        padding: 0px;
+        margin: 0px;
+    color: #0B0C0C;
+}
+
+
+
+/* Styles for bottom menu */
+
+.articlesSection {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 39px;
+    margin-bottom: 57px;
+}
+
+.link {
+    text-decoration: none;
+
+}
+
+.item {
+    text-align: start;
+    width: 300px;
+    margin-right: 33px;
+    margin-bottom: 10px;
+}
+
+.item:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.dateLabel {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #626A6E;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.itemTitle {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #00703C;
+}
+
+.itemTitle:hover {
+    cursor: pointer;
+}
+
+
+.textOldArticles {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #0B0C0C;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+/* Menu styles */
+
+.linkList {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 25px;
+    color: #0B0C0C;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+
+
+}
+
+
+.linkItem {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 37px;
+    margin-left: 9.86px;
+    margin-right: 12.67px;
+    margin-bottom: 27px;
+}
+
+.linkItem:nth-child(1) {
+    margin-left: 9.86px;
+}
+
+.linkUrl {
+    color: #0B0C0C;
+}
+
+.linkNameOfTopic {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 25px;
+    color: #0B0C0C;
+    margin: 0px;
+    padding: 0px;
+}
