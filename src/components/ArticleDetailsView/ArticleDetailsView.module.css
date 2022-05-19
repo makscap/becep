@@ -120,6 +120,11 @@
 
 }
 
+.fbLink {
+    color: #00703C;
+    text-decoration: none;
+}
+
 .fbText {
     margin-left: 5px;
 }

@@ -1,8 +1,8 @@
 .modal {
-
     position: absolute;
     background: white;
-    /* width: 80%; */
+    max-width: 911px;
+    max-height: 704px;
     height: auto;
     top: 50%;
     left: 50%;
@@ -12,7 +12,6 @@
 }
 
 .overlay {
-
     display: block;
     position: fixed;
     top: 0;
@@ -34,6 +33,7 @@
 .galeriaBackground {
     background-color: #F3F2F1;
     width: 100%;
+    margin-bottom: 42px;
 }
 
 .galeria {
@@ -66,6 +66,8 @@
 .photo {
     margin-bottom: 65px;
     margin-right: 30px;
+    cursor: pointer;
+
 }
 
 .photo:last-child {
@@ -88,6 +90,8 @@
     border: 0px;
     outline: none;
     box-shadow: 0px 5px 10px #DEE0E2;
+    cursor: pointer;
+
 }
 
 .btnRight {
@@ -106,6 +110,8 @@
     border: 0px;
     outline: none;
     box-shadow: 0px 5px 10px #DEE0E2;
+    cursor: pointer;
+
 
 
 }
@@ -119,13 +125,14 @@
     width: 32px;
     height: 32px;
     background-color: #FFFFFF;
-    top: 300px;
+    top: calc(50% - 16px);
     left: 25px;
     border-radius: 50%;
     padding: 0px;
     border: 0px;
     outline: none;
     box-shadow: 0px 5px 10px #DEE0E2;
+    cursor: pointer;
 }
 
 .nextBtn {
@@ -137,13 +144,15 @@
     width: 32px;
     height: 32px;
     background-color: #FFFFFF;
-    top: 300px;
+    top: calc(50% - 16px);
     right: 25px;
     border-radius: 50%;
     padding: 0px;
     border: 0px;
     outline: none;
     box-shadow: 0px 5px 10px #DEE0E2;
+    cursor: pointer;
+
 }
 
 .closeBtn {
@@ -154,4 +163,11 @@
     border: 0px;
     margin-top: 24.41px;
     margin-right: 29.41px;
+    cursor: pointer;
+
+}
+
+.photoInModal {
+    max-width: 100%;
+    max-height: 100%;
 }

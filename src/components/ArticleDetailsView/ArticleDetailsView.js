@@ -6,9 +6,6 @@ import Gallery from '../Gallery/Gallery';
 const ArticleMenu = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
-  // const [allArticles, setAllArticles] = useState(null);
-
-  // const TOPIC_NAME = 'Activity';
 
   useEffect(() => {
     fetch(`https://product-shop-api.herokuapp.com/product/${articleId}`)
@@ -19,23 +16,7 @@ const ArticleMenu = () => {
       });
   }, [articleId]);
 
-  // useEffect(() => {
-  //   fetch(`https://product-shop-api.herokuapp.com/product/`)
-  //     .then(r => r.json())
-  //     .then(setAllArticles)
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }, [articleId]);
-
-  // function getValueArticles(indx) {
-  //   setOldArticlesValue(Number(indx) + 2);
-  // }
-
-  // console.log(articleId, oldArticlesValue);
-
   return (
-    // <div className="container">
     <div>
       <div className="container">
         <ul className={s.linkList}>
@@ -124,7 +105,6 @@ const ArticleMenu = () => {
       </div>
       {article && (
         <>
-          {/* <div className={s.section}> */}
           <div className={s.infoBlock}>
             <div className="container">
               <h3 className={s.pageLabel}>Aktualita</h3>
@@ -139,10 +119,11 @@ const ArticleMenu = () => {
                 vzdelávacie pomôcky pre bezpečný pohyb v cestnej premávke.
               </p>
             </div>
-            {/* gallery */}
-            <Gallery article={article} />
 
             {/* gallery */}
+            <Gallery article={article} />
+            {/* gallery */}
+
             <div className={s.linksPosition}>
               <div className="container">
                 <div className={s.linksPosition}>
@@ -161,7 +142,9 @@ const ArticleMenu = () => {
                           fill="#00703C"
                         />
                       </svg>
-                      <span className={s.fbText}>Facebook</span>
+                      <a href="https://www.facebook.com/" className={s.fbLink}>
+                        <span className={s.fbText}>Facebook</span>
+                      </a>
                     </p>
                     <div className={s.lineBlack}></div>
                   </div>
@@ -169,10 +152,8 @@ const ArticleMenu = () => {
                     <p className={s.sameNews}>Súvisiace témy:</p>
                   </div>
                   <ul className={s.list}>
-                    <li className={s.item}>1</li>
-                    <li className={s.item}>1</li>
-                    <li className={s.item}>1</li>
-                    <li className={s.item}>1</li>
+                    <li className={s.item}>????</li>
+                    <li className={s.item}>????</li>
                   </ul>
                 </div>
               </div>

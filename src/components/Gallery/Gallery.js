@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import s from './Gallery.module.css';
 
 const images = [
@@ -16,8 +16,21 @@ const Gallery = ({ article }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const currentProduct = images.slice(currentPageWithPhotos, photosPerPage);
+  const escFunction = useCallback(event => {
+    if (event.keyCode === 27) {
+      closeModal();
+    }
+  }, []);
 
+  useEffect(() => {
+    document.addEventListener('keydown', escFunction);
+
+    return () => {
+      document.removeEventListener('keydown', escFunction);
+    };
+  }, [escFunction]);
+
+  const currentProduct = images.slice(currentPageWithPhotos, photosPerPage);
   const paginate = pageNumber => setCurrentPageWithPhotos(pageNumber);
   const pageNumbers = [];
   const page = Math.ceil(images.length);
@@ -46,22 +59,12 @@ const Gallery = ({ article }) => {
     return photos;
   };
 
-  function openModal() {
+  function openModal(e) {
     setShowModal(!showModal);
   }
 
   function closeModal(e) {
-    setShowModal(!showModal);
-  }
-
-  function onCloseModalByEsc(event) {
-    console.log('first', event);
-    // if (e.keyCode === 27) {
-    if (event.code === 'Escape') {
-      console.log('second', event);
-
-      closeModal();
-    }
+    setShowModal(false);
   }
 
   function onCloseModalOnOverlay(event) {
@@ -72,6 +75,23 @@ const Gallery = ({ article }) => {
 
   const showHideClassName = showModal ? s.overlay : s.closeModal;
 
+  const [ind, setInd] = useState(null);
+
+  const goToPrevImg = e => {
+    if (ind >= 0) {
+      setInd(ind - 1);
+      setSelectedPhoto(images[ind]);
+    }
+  };
+
+  const goToNextImg = e => {
+    if (ind < images.length) {
+      setInd(ind + 1);
+      setSelectedPhoto(images[ind]);
+    }
+    return images.filter(e => e + 1);
+  };
+
   return (
     <>
       <div className={s.galeriaBackground}>
@@ -80,16 +100,18 @@ const Gallery = ({ article }) => {
             <h4 className={s.galeriaLabel}>Fotogaléria</h4>
 
             <div className={s.photoGroup}>
-              {currentProduct.map(e => (
+              {currentProduct.map((e, i, array) => (
                 <img
                   src={e}
                   alt={e}
-                  width="299px"
-                  height="185px"
+                  width="300px"
+                  height="187px"
                   className={s.photo}
                   onClick={e => {
+                    setInd(i);
                     setSelectedPhoto(e.target.src);
                     openModal();
+                    console.log('click', ind);
                   }}
                 />
               ))}
@@ -141,9 +163,14 @@ const Gallery = ({ article }) => {
 
         {/* MODAL */}
         <div className={showHideClassName} onClick={onCloseModalOnOverlay}>
-          <section className={s.modal} onKeyDown={onCloseModalByEsc}>
-            <img src={selectedPhoto} alt={selectedPhoto} width="748px" height="465px"></img>
-            <button className={s.prevBtn}>
+          <section className={s.modal}>
+            <img
+              src={selectedPhoto}
+              alt={selectedPhoto}
+              // width="748px" height="465px"
+              className={s.photoInModal}
+            ></img>
+            <button className={s.prevBtn} onClick={goToPrevImg}>
               <svg
                 width="7"
                 height="12"
@@ -157,7 +184,7 @@ const Gallery = ({ article }) => {
                 />
               </svg>
             </button>
-            <button className={s.nextBtn}>
+            <button className={s.nextBtn} onClick={goToNextImg}>
               <svg
                 width="7"
                 height="12"
@@ -171,7 +198,7 @@ const Gallery = ({ article }) => {
                 />
               </svg>
             </button>
-            <button type="button" onClick={closeModal} className={s.closeBtn}>
+            <button type="button" className={s.closeBtn} onClick={closeModal}>
               <svg
                 width="14"
                 height="14"

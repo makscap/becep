@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import s from './Pagination.module.css';
 
 function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
