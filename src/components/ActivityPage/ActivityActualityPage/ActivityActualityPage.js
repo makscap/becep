@@ -95,7 +95,7 @@ const ActivityActualityPage = () => {
       {allArticles && (
         <Pagination
           productsPerPage={productsPerPage}
-          totalProducts={allArticles.length}
+          allArticlesLength={allArticles.length}
           paginate={paginate}
           currentPage={currentPage}
         />

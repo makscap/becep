@@ -66,3 +66,14 @@
 .svg:focus, .svg:hover {
   fill: #000000;
 }
+
+.linkDisable {
+    width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0B0C0C;
+  text-decoration: none;
+  pointer-events: none;
+}

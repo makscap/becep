@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import s from './Pagination.module.css';
 
-function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
-  const pageNumbers = [];
-  const page = Math.ceil(totalProducts / productsPerPage);
+function Pagination({ productsPerPage, allArticlesLength, paginate, currentPage }) {
+  let pageNumbers = [];
+
+  const page = Math.ceil(allArticlesLength / productsPerPage);
 
   for (let i = 1; i <= page; i++) {
     pageNumbers.push(i);
@@ -19,20 +20,51 @@ function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
 
   const incrementPage = page => {
     if (page < pageNumbers.length) {
-      console.log(page);
       return currentPage + 1;
     }
     return page;
   };
 
+  // RESPONSIVE pagination
+
+  let startPage, endPage;
+
+  if (page <= 10) {
+    // less than 10 total pages so show all
+    startPage = 1;
+    endPage = page;
+  } else {
+    // more than 10 total pages so calculate start and end pages
+    if (currentPage <= 6) {
+      startPage = 1;
+      endPage = 10;
+    } else if (currentPage + 4 >= page) {
+      startPage = page - 9;
+      endPage = page;
+    } else {
+      startPage = currentPage - 5;
+      endPage = currentPage + 4;
+    }
+  }
+
+  // calculate start and end item indexes
+  // let startIndex = (currentPage - 1) * productsPerPage;
+  // let endIndex = Math.min(startIndex + productsPerPage - 1, allArticlesLength - 1);
+  // console.log('🚀 ~ file: Pagination.js ~ line 53 ~ Pagination ~ endIndex', endIndex);
+
+  // create an array of pages to ng-repeat in the pager control
+  let pages = [...Array(endPage + 1 - startPage).keys()].map(i => startPage + i);
+
+  // return object with all pager properties required by the view
+
   return (
     <div className={s.paginate}>
       {pageNumbers.length > 1 && (
         <ul className={s.list}>
-          <li className={s.item}>
+          <li className={s.item} key={'btn1'}>
             <Link
               to={currentPage}
-              className={s.link}
+              className={currentPage === 1 ? s.linkDisable : s.link}
               onClick={e => {
                 e.preventDefault();
                 paginate(decrementPage);
@@ -46,47 +78,33 @@ function Pagination({ productsPerPage, totalProducts, paginate, currentPage }) {
               </div>
             </Link>
           </li>
-          {pageNumbers.map(num => (
-            <>
-              <li key={num} className={num === currentPage ? s.itemActive : s.item}>
-                <Link
-                  to={currentPage}
-                  className={num === currentPage ? s.linkActive : s.link}
-                  onClick={e => {
-                    e.preventDefault();
-                    paginate(num);
-                  }}
-                >
-                  {num}
-                </Link>
-              </li>
-            </>
+          {pages.map(num => (
+            <li key={num} className={num === currentPage ? s.itemActive : s.item}>
+              <Link
+                to={currentPage}
+                className={num === currentPage ? s.linkActive : s.link}
+                onClick={e => {
+                  e.preventDefault();
+                  paginate(num);
+                }}
+              >
+                {num}
+              </Link>
+            </li>
           ))}
-          <li className={s.item}>
+          <li className={s.item} key={'btn2'}>
             <Link
               to={currentPage}
-              className={s.link}
+              className={currentPage === page ? s.linkDisable : s.link}
               onClick={e => {
                 e.preventDefault();
                 paginate(incrementPage);
               }}
             >
               <div className={s.svg}>
-                <svg
-                  width="30"
-                  height="24"
-                  viewBox="0 0 30 24"
-                  // fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9.29002 8.12002L13.17 12L9.29002 15.88C8.90002 16.27 8.90002 16.9 9.29002 17.29C9.68002 17.68 10.31 17.68 10.7 17.29L15.29 12.7C15.68 12.31 15.68 11.68 15.29 11.29L10.7 6.70002C10.31 6.31002 9.68002 6.31002 9.29002 6.70002C8.91002 7.09002 8.90002 7.73002 9.29002 8.12002Z"
-                    // fill="black"
-                  />
-                  <path
-                    d="M15.29 8.12002L19.17 12L15.29 15.88C14.9 16.27 14.9 16.9 15.29 17.29C15.68 17.68 16.31 17.68 16.7 17.29L21.29 12.7C21.68 12.31 21.68 11.68 21.29 11.29L16.7 6.70002C16.31 6.31002 15.68 6.31002 15.29 6.70002C14.91 7.09002 14.9 7.73002 15.29 8.12002Z"
-                    // fill="black"
-                  />
+                <svg width="30" height="24" viewBox="0 0 30 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.29002 8.12002L13.17 12L9.29002 15.88C8.90002 16.27 8.90002 16.9 9.29002 17.29C9.68002 17.68 10.31 17.68 10.7 17.29L15.29 12.7C15.68 12.31 15.68 11.68 15.29 11.29L10.7 6.70002C10.31 6.31002 9.68002 6.31002 9.29002 6.70002C8.91002 7.09002 8.90002 7.73002 9.29002 8.12002Z" />
+                  <path d="M15.29 8.12002L19.17 12L15.29 15.88C14.9 16.27 14.9 16.9 15.29 17.29C15.68 17.68 16.31 17.68 16.7 17.29L21.29 12.7C21.68 12.31 21.68 11.68 21.29 11.29L16.7 6.70002C16.31 6.31002 15.68 6.31002 15.29 6.70002C14.91 7.09002 14.9 7.73002 15.29 8.12002Z" />
                 </svg>
               </div>
             </Link>

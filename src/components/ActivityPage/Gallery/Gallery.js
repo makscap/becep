@@ -95,6 +95,7 @@ const Gallery = ({ article }) => {
             <div className={s.photoGroup}>
               {currentProduct.map((e, i) => (
                 <img
+                  key={i}
                   src={e}
                   alt={e}
                   width="300px"

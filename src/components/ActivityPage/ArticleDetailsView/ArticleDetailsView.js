@@ -8,6 +8,7 @@ const ArticleDetailsView = () => {
   const [article, setArticle] = useState(null);
   const [allArticles, setAllArticles] = useState(null);
   const [id, setId] = useState(articleId);
+
   useEffect(() => {
     fetch(`https://product-shop-api.herokuapp.com/product/`)
       .then(r => r.json())
@@ -165,10 +166,8 @@ const ArticleDetailsView = () => {
                         .filter(e => e.id !== id)
                         .slice(0, 2)
                         .map((e, i) => (
-                          // <Link to={`/actuality/activity/${e.id}`} className={s.item} key={i}>
-                          //   {e.name}
-                          // </Link>
                           <Link
+                            key={i}
                             to={`/actuality/activity/${e.id}`}
                             className={s.linkSameTopics}
                             onClick={() => setId(e.id)}
