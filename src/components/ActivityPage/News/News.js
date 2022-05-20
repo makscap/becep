@@ -6,7 +6,7 @@ const News = ({ articles, topicName }) => {
     <>
       {articles &&
         articles.slice(0, 1).map(article => (
-          <Link to={`/actuality/${article.id}`} className={s.link}>
+          <Link to={`/actuality/activity/${article.id}`} className={s.link}>
             <div className={s.section}>
               <div className={s.photoBlock}>
                 <img src={article.imageUrl} alt="article" width="445px" height="312px" />
@@ -28,7 +28,7 @@ const News = ({ articles, topicName }) => {
         {articles &&
           articles.slice(1).map(article => (
             <li className={s.item} key={article.id}>
-              <Link to={`/actuality/${article.id}`} className={s.link}>
+              <Link to={`/actuality/activity/${article.id}`} className={s.link}>
                 <img src={article.imageUrl} alt="article" width="300px"></img>
                 <p className={s.dateLabel}>{`${'date'} - ${topicName}`}</p>
                 <p className={s.itemTitle}>{article.name}</p>

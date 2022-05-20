@@ -29,7 +29,7 @@ const ActivityViziaPage = () => {
         {data &&
           data.slice(0, visible).map((el, i) => (
             <li className={s.item} key={el.id}>
-              <Link to={`/actuality/${el.id}`} className={s.link}>
+              <Link to={`/actuality/activity/${el.id}`} className={s.link}>
                 <img src={el.imageUrl} alt="article" width="300px"></img>
                 <p className={s.dateLabel}>{`${'date'} - ${TOPIC_NAME}`}</p>
                 <p className={s.itemTitle}>{el.name}</p>

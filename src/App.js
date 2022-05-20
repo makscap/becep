@@ -7,6 +7,7 @@ import ActivityHomePage from './components/ActivityPage/ActivityHomePage/Activit
 import ActivityActualityPage from './components/ActivityPage/ActivityActualityPage/ActivityActualityPage';
 import ActivityViziaPage from './components/ActivityPage/ActivityViziaPage/ActivityViziaPage';
 import ArticleDetailsView from './components/ActivityPage/ArticleDetailsView/ArticleDetailsView';
+import NotFound from './screens/NotFound';
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<ActivityHomePage exact />} />
           <Route path="/vizia" element={<ActivityViziaPage />} exact />
-          <Route path="/actuality" element={<ActivityActualityPage />} exact />
-          <Route path="/actuality/:articleId" element={<ArticleDetailsView />} />
+          <Route path="/actuality" element={<NotFound />} exact />
+          <Route path="/actuality/activity" element={<ActivityActualityPage />} exact />
+          <Route path="/actuality/activity/:articleId" element={<ArticleDetailsView />} />
         </Routes>
       </Router>
     </div>

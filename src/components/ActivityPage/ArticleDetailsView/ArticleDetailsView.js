@@ -6,6 +6,18 @@ import Gallery from '../Gallery/Gallery';
 const ArticleDetailsView = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
+  const [allArticles, setAllArticles] = useState(null);
+
+  console.log('params', articleId);
+
+  useEffect(() => {
+    fetch(`https://product-shop-api.herokuapp.com/product/`)
+      .then(r => r.json())
+      .then(setAllArticles)
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     fetch(`https://product-shop-api.herokuapp.com/product/${articleId}`)
@@ -42,14 +54,14 @@ const ArticleDetailsView = () => {
 
           <li className={s.linkItem}>
             <svg
-              width="16"
-              height="17"
-              viewBox="0 0 16 17"
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M4.91967 14.5067C5.24633 14.8334 5.773 14.8334 6.09967 14.5067L11.6397 8.9667C11.8997 8.7067 11.8997 8.2867 11.6397 8.0267L6.09967 2.4867C5.773 2.16003 5.24633 2.16003 4.91967 2.4867C4.593 2.81337 4.593 3.34003 4.91967 3.6667L9.74633 8.50003L4.913 13.3334C4.593 13.6534 4.593 14.1867 4.91967 14.5067Z"
+                d="M0.919912 12.5067C1.24658 12.8334 1.77325 12.8334 2.09991 12.5067L7.63991 6.9667C7.89991 6.7067 7.89991 6.2867 7.63991 6.0267L2.09991 0.486699C1.77325 0.160033 1.24658 0.160033 0.919912 0.486699C0.593245 0.813366 0.593245 1.34003 0.919912 1.6667L5.74658 6.50003L0.913245 11.3334C0.593245 11.6534 0.593245 12.1867 0.919912 12.5067Z"
                 fill="#0B0C0C"
               />
             </svg>
@@ -57,7 +69,26 @@ const ArticleDetailsView = () => {
 
           <li className={s.linkItem}>
             <Link to="/actuality/" className={s.linkUrl}>
-              Activity
+              Aktuality
+            </Link>
+          </li>
+          <li className={s.linkItem}>
+            <svg
+              width="8"
+              height="13"
+              viewBox="0 0 8 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.919912 12.5067C1.24658 12.8334 1.77325 12.8334 2.09991 12.5067L7.63991 6.9667C7.89991 6.7067 7.89991 6.2867 7.63991 6.0267L2.09991 0.486699C1.77325 0.160033 1.24658 0.160033 0.919912 0.486699C0.593245 0.813366 0.593245 1.34003 0.919912 1.6667L5.74658 6.50003L0.913245 11.3334C0.593245 11.6534 0.593245 12.1867 0.919912 12.5067Z"
+                fill="#0B0C0C"
+              />
+            </svg>
+          </li>
+          <li className={s.linkItem}>
+            <Link to="/actuality/activity/" className={s.linkUrl}>
+              Aktivity
             </Link>
           </li>
           <li className={s.linkItem}>
@@ -130,8 +161,16 @@ const ArticleDetailsView = () => {
                     <p className={s.sameNews}>Súvisiace témy:</p>
                   </div>
                   <ul className={s.list}>
-                    <li className={s.item}>????</li>
-                    <li className={s.item}>????</li>
+                    {allArticles.length > 1 &&
+                      allArticles
+                        .sort((a, b) => b.id - a.id)
+                        .filter(e => e.id !== articleId)
+                        .slice(0, 2)
+                        .map((e, i) => (
+                          <a href={`/actuality/activity/${e.id}`} className={s.linkSameTopics}>
+                            {e.name}
+                          </a>
+                        ))}
                   </ul>
                 </div>
               </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import s from './Gallery.module.css';
 
 const images = [
+  'https://vjoy.cc/wp-content/uploads/2019/09/oboik.ru_12282.jpg',
+  'https://media.istockphoto.com/photos/beautiful-eiffel-tower-vertical-photo-picture-id696912118?s=612x612',
   'https://imageio.forbes.com/specials-images/imageserve/61d52d4e3a76ed81ac034ea8/The-10-Tech-Trends-That-Will-Transform-Our-World/960x0.jpg?fit=bounds&format=jpg&width=960',
   'https://fotky.sme.sk/foto/393529/abstrakt?type=v&x=650&y=433',
   'https://fotky.sme.sk/foto/234886/farebne-linie?type=v&x=650&y=487',
@@ -152,12 +154,9 @@ const Gallery = ({ article }) => {
         {/* MODAL */}
         <div className={showHideClassName} onClick={onCloseModalOnOverlay}>
           <section className={s.modal}>
-            <img
-              src={images[position]}
-              alt={images[position]}
-              // width="748px" height="465px"
-              className={s.photoInModal}
-            ></img>
+            <div className={s.photoInModal}>
+              <img src={images[position]} alt={images[position]} className={s.photoBox}></img>
+            </div>
             <button className={s.prevBtn} onClick={goToPrevImg}>
               <svg
                 width="7"

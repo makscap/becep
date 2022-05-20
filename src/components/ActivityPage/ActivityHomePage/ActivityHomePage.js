@@ -24,11 +24,17 @@ const ActivityHomePage = () => {
   const currentProduct = allArticles?.slice(firstProductIndex, lastProductIndex); // Pagination
   return (
     <div className="container">
+      <div className={s.btn} style={{ marginTop: '10px' }}>
+        <Link to="/vizia" className={s.btnLink}>
+          COMPONENT FOR VIZIA PAGE
+        </Link>
+      </div>
+
       <h2 className={s.title}>{TOPIC_NAME}</h2>
 
       {allArticles && <News articles={currentProduct} topicName={TOPIC_NAME} />}
       <div className={s.btn}>
-        <Link to="/actuality" className={s.btnLink}>
+        <Link to="/actuality/activity/" className={s.btnLink}>
           Ďalšie aktuality
         </Link>
       </div>

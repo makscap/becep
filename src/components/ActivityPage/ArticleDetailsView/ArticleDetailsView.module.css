@@ -182,19 +182,16 @@
     padding: 0px;
     display: flex;
     list-style: none;
-
-
+    margin-top: 37px;
+    margin-bottom: 37px;
 }
 
 
 .linkItem {
     margin: 0px;
     padding: 0px;
-    margin-top: 37px;
     margin-right: 8px;
-    margin-bottom: 27px;
     text-decoration-line: underline;
-
 }
 
 .linkItem:last-child {
@@ -218,4 +215,16 @@
     color: #0B0C0C;
     margin: 0px;
     padding: 0px;
+}
+
+.linkSameTopics {
+    font-family: 'Source Sans Pro';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 20px;
+color: #00703C;
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: 16px;
 }
