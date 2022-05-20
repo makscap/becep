@@ -165,12 +165,13 @@ const ArticleDetailsView = () => {
                         .filter(e => e.id !== articleId)
                         .slice(0, 2)
                         .map((e, i) => (
-                          // <Link to={`/actuality/activity/${e.id}`} className={s.item} key={i}>
-                          //   {e.name}
-                          // </Link>
-                          <a href={`/actuality/activity/${e.id}`} className={s.linkSameTopics}>
+                          <Link
+                            href={`/actuality/activity/${e.id}`}
+                            onClick={() => setArticle(e)}
+                            className={s.linkSameTopics}
+                          >
                             {e.name}
-                          </a>
+                          </Link>
                         ))}
                   </ul>
                 </div>
