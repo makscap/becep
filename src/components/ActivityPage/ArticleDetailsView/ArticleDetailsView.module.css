@@ -228,3 +228,7 @@ color: #00703C;
     padding: 0px;
     margin-bottom: 16px;
 }
+
+.linkSameTopics:last-child {
+    margin-bottom: 66px;
+}
