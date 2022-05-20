@@ -7,7 +7,7 @@ const ArticleDetailsView = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
   const [allArticles, setAllArticles] = useState(null);
-
+  const [id, setId] = useState(articleId);
   useEffect(() => {
     fetch(`https://product-shop-api.herokuapp.com/product/`)
       .then(r => r.json())
@@ -18,13 +18,13 @@ const ArticleDetailsView = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://product-shop-api.herokuapp.com/product/${articleId}`)
+    fetch(`https://product-shop-api.herokuapp.com/product/${id}`)
       .then(r => r.json())
       .then(setArticle)
       .catch(err => {
         console.log(err);
       });
-  }, [articleId]);
+  }, [id]);
 
   return (
     <div>
@@ -162,13 +162,17 @@ const ArticleDetailsView = () => {
                     {allArticles &&
                       allArticles
                         .sort((a, b) => b.id - a.id)
-                        .filter(e => e.id !== articleId)
+                        .filter(e => e.id !== id)
                         .slice(0, 2)
                         .map((e, i) => (
                           // <Link to={`/actuality/activity/${e.id}`} className={s.item} key={i}>
                           //   {e.name}
                           // </Link>
-                          <a href={`/actuality/activity/${e.id}`} className={s.linkSameTopics}>
+                          <a
+                            href={`/actuality/activity/${e.id}`}
+                            className={s.linkSameTopics}
+                            onClick={() => setId(e.id)}
+                          >
                             {e.name}
                           </a>
                         ))}
