@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import s from '../ActivityView/ActivityView.module.css';
+import s from './ActivityActualityPage.module.css';
 import News from '../News/News';
 import Pagination from '../Pagination/Pagination';
 
-const ActivityView = () => {
+const ActivityActualityPage = () => {
   const [allArticles, setAllArticles] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // Pagination
   const [productsPerPage] = useState(4); // Pagination
@@ -29,14 +29,14 @@ const ActivityView = () => {
       <ul className={s.linkList}>
         <li className={s.linkItem}>
           <svg
-            width="14"
-            height="12"
-            viewBox="0 0 14 12"
+            width="16"
+            height="17"
+            viewBox="0 0 16 17"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M5.66673 11.1666V7.83331H8.3334V11.1666C8.3334 11.5333 8.6334 11.8333 9.00007 11.8333H11.0001C11.3667 11.8333 11.6667 11.5333 11.6667 11.1666V6.49998H12.8001C13.1067 6.49998 13.2534 6.11998 13.0201 5.91998L7.44673 0.89998C7.1934 0.673314 6.80673 0.673314 6.5534 0.89998L0.980065 5.91998C0.753399 6.11998 0.893399 6.49998 1.20007 6.49998H2.3334V11.1666C2.3334 11.5333 2.6334 11.8333 3.00007 11.8333H5.00007C5.36673 11.8333 5.66673 11.5333 5.66673 11.1666Z"
+              d="M6.66673 13.1666V9.83331H9.3334V13.1666C9.3334 13.5333 9.6334 13.8333 10.0001 13.8333H12.0001C12.3667 13.8333 12.6667 13.5333 12.6667 13.1666V8.49998H13.8001C14.1067 8.49998 14.2534 8.11998 14.0201 7.91998L8.44673 2.89998C8.1934 2.67331 7.80673 2.67331 7.5534 2.89998L1.98007 7.91998C1.7534 8.11998 1.8934 8.49998 2.20007 8.49998H3.3334V13.1666C3.3334 13.5333 3.6334 13.8333 4.00007 13.8333H6.00007C6.36673 13.8333 6.66673 13.5333 6.66673 13.1666Z"
               fill="#0B0C0C"
             />
           </svg>
@@ -49,14 +49,14 @@ const ActivityView = () => {
 
         <li className={s.linkItem}>
           <svg
-            width="8"
-            height="13"
-            viewBox="0 0 8 13"
+            width="16"
+            height="17"
+            viewBox="0 0 16 17"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M0.919912 12.5067C1.24658 12.8334 1.77325 12.8334 2.09991 12.5067L7.63991 6.9667C7.89991 6.7067 7.89991 6.2867 7.63991 6.0267L2.09991 0.486699C1.77325 0.160033 1.24658 0.160033 0.919912 0.486699C0.593245 0.813366 0.593245 1.34003 0.919912 1.6667L5.74658 6.50003L0.913245 11.3334C0.593245 11.6534 0.593245 12.1867 0.919912 12.5067Z"
+              d="M4.91967 14.5067C5.24633 14.8334 5.773 14.8334 6.09967 14.5067L11.6397 8.9667C11.8997 8.7067 11.8997 8.2867 11.6397 8.0267L6.09967 2.4867C5.773 2.16003 5.24633 2.16003 4.91967 2.4867C4.593 2.81337 4.593 3.34003 4.91967 3.6667L9.74633 8.50003L4.913 13.3334C4.593 13.6534 4.593 14.1867 4.91967 14.5067Z"
               fill="#0B0C0C"
             />
           </svg>
@@ -64,27 +64,6 @@ const ActivityView = () => {
 
         <li className={s.linkItem}>
           <Link to="/actuality/" className={s.linkUrl}>
-            Actuality
-          </Link>
-        </li>
-
-        <li className={s.linkItem}>
-          <svg
-            width="8"
-            height="13"
-            viewBox="0 0 8 13"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0.919912 12.5067C1.24658 12.8334 1.77325 12.8334 2.09991 12.5067L7.63991 6.9667C7.89991 6.7067 7.89991 6.2867 7.63991 6.0267L2.09991 0.486699C1.77325 0.160033 1.24658 0.160033 0.919912 0.486699C0.593245 0.813366 0.593245 1.34003 0.919912 1.6667L5.74658 6.50003L0.913245 11.3334C0.593245 11.6534 0.593245 12.1867 0.919912 12.5067Z"
-              fill="#0B0C0C"
-            />
-          </svg>
-        </li>
-
-        <li className={s.linkItem}>
-          <Link to="/actuality/activity/" className={s.linkUrl}>
             Activity
           </Link>
         </li>
@@ -104,4 +83,4 @@ const ActivityView = () => {
   );
 };
 
-export default ActivityView;
+export default ActivityActualityPage;

@@ -1,21 +1,22 @@
 import React from 'react';
-import './App.css';
-import ArticlesSection from './components/ArticlesSection/ArticlesSection';
 import { Routes, Route } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ActivityView from './components/ActivityView/ActivityView';
-import ArticleDetailsView from './components/ArticleDetailsView/ArticleDetailsView';
-import NotFound from './screens/NotFound';
+import './App.css';
+
+import ActivityHomePage from './components/ActivityPage/ActivityHomePage/ActivityHomePage';
+import ActivityActualityPage from './components/ActivityPage/ActivityActualityPage/ActivityActualityPage';
+import ActivityViziaPage from './components/ActivityPage/ActivityViziaPage/ActivityViziaPage';
+import ArticleDetailsView from './components/ActivityPage/ArticleDetailsView/ArticleDetailsView';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<ArticlesSection />} />
-          <Route path="/actuality" element={<NotFound />} exact />
-          <Route path="/actuality/activity" element={<ActivityView />} exact />
-          <Route path="/actuality/activity/:articleId" element={<ArticleDetailsView />} />
+          <Route path="/" element={<ActivityHomePage exact />} />
+          <Route path="/vizia" element={<ActivityViziaPage />} exact />
+          <Route path="/actuality" element={<ActivityActualityPage />} exact />
+          <Route path="/actuality/:articleId" element={<ArticleDetailsView />} />
         </Routes>
       </Router>
     </div>

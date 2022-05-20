@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import s from './ArticlesSection.module.css';
+import s from './ActivityViziaPage.module.css';
 
-const ArticlesSection = () => {
+const ActivityViziaPage = () => {
   const [data, setData] = useState(null);
   const [visible, setVisible] = useState(3);
   const TOPIC_NAME = 'Vízia 0';
@@ -29,7 +29,7 @@ const ArticlesSection = () => {
         {data &&
           data.slice(0, visible).map((el, i) => (
             <li className={s.item} key={el.id}>
-              <Link to={`/actuality/activity/${el.id}`} className={s.link}>
+              <Link to={`/actuality/${el.id}`} className={s.link}>
                 <img src={el.imageUrl} alt="article" width="300px"></img>
                 <p className={s.dateLabel}>{`${'date'} - ${TOPIC_NAME}`}</p>
                 <p className={s.itemTitle}>{el.name}</p>
@@ -50,4 +50,4 @@ const ArticlesSection = () => {
   );
 };
 
-export default ArticlesSection;
+export default ActivityViziaPage;

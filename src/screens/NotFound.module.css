@@ -20,17 +20,22 @@
     margin: 0px;
     padding: 0px;
     margin-top: 37px;
-    margin-left: 9.86px;
-    margin-right: 12.67px;
+    margin-right: 8px;
     margin-bottom: 27px;
+    text-decoration-line: underline;
+
 }
 
-.linkItem:nth-child(1) {
-    margin-left: 9.86px;
+.linkItem:last-child {
+    margin-right: 0px;
+    text-decoration-line: none;
+
 }
 
 .linkUrl {
     color: #0B0C0C;
+    text-decoration-line: none;
+
 }
 
 .linkNameOfTopic {

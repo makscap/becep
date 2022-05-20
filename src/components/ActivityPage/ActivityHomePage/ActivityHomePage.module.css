@@ -73,7 +73,7 @@ font-family: 'Source Sans Pro';
     padding: 0px;
     margin: 0px;
     margin-top: 39px;
-    margin-bottom: 57px;
+    margin-bottom: 53px;
 }
 
 .link {
@@ -160,17 +160,22 @@ font-family: 'Source Sans Pro';
     margin: 0px;
     padding: 0px;
     margin-top: 37px;
-    margin-left: 9.86px;
-    margin-right: 12.67px;
+    margin-right: 8px;
     margin-bottom: 27px;
+    text-decoration-line: underline;
+
 }
 
-.linkItem:nth-child(1) {
-    margin-left: 9.86px;
+.linkItem:last-child {
+    margin-right: 0px;
+    text-decoration-line: none;
+
 }
 
 .linkUrl {
     color: #0B0C0C;
+    text-decoration-line: none;
+
 }
 
 .linkNameOfTopic {
@@ -182,4 +187,29 @@ font-family: 'Source Sans Pro';
     color: #0B0C0C;
     margin: 0px;
     padding: 0px;
+}
+
+.btn {
+    font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 25px;
+        text-decoration-line: underline;
+        color: #00703C;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        margin-bottom: 53px;
+
+}
+
+.btnLink {
+    font-family: 'Source Sans Pro';
+font-style: normal;
+font-weight: 400;
+font-size: 19px;
+line-height: 25px;
+text-decoration-line: underline;
+color: #00703C;
 }
