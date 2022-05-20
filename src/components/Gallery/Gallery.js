@@ -39,7 +39,6 @@ const Gallery = ({ article }) => {
     if (photos >= 1) {
       setPhotosPerPage(() => photosPerPage - 1);
       setCurrentPageWithPhotos(() => currentPageWithPhotos - 1);
-      return currentProduct;
     }
     return photos;
   };
@@ -48,7 +47,6 @@ const Gallery = ({ article }) => {
     if (photos + 3 < images.length) {
       setPhotosPerPage(() => photosPerPage + 1);
       setCurrentPageWithPhotos(() => currentPageWithPhotos + 1);
-      return currentProduct;
     }
     return photos;
   };
@@ -81,6 +79,10 @@ const Gallery = ({ article }) => {
     }
   };
 
+  const getPositionInArray = url => {
+    setPosition(images.indexOf(url));
+  };
+
   return (
     <>
       <div className={s.galeriaBackground}>
@@ -89,7 +91,7 @@ const Gallery = ({ article }) => {
             <h4 className={s.galeriaLabel}>Fotogaléria</h4>
 
             <div className={s.photoGroup}>
-              {currentProduct.map((e, i, array) => (
+              {currentProduct.map((e, i) => (
                 <img
                   src={e}
                   alt={e}
@@ -99,6 +101,7 @@ const Gallery = ({ article }) => {
                   onClick={e => {
                     setPosition(i);
                     openModal();
+                    getPositionInArray(e.target.src);
                   }}
                 />
               ))}
