@@ -168,13 +168,13 @@ const ArticleDetailsView = () => {
                           // <Link to={`/actuality/activity/${e.id}`} className={s.item} key={i}>
                           //   {e.name}
                           // </Link>
-                          <a
+                          <Link
                             href={`/actuality/activity/${e.id}`}
                             className={s.linkSameTopics}
                             onClick={() => setId(e.id)}
                           >
                             {e.name}
-                          </a>
+                          </Link>
                         ))}
                   </ul>
                 </div>
