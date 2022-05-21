@@ -48,6 +48,18 @@
     margin-right: 0px;
 }
 
+
+@media screen and (max-width: 767px) {
+.photo:last-child {
+    margin-right: 30px;
+}
+
+}
+
+
+
+
+
 .btnLeft {
     display: flex;
     justify-content: center;

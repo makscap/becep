@@ -13,6 +13,7 @@ margin: 0px;
 
 .articlesSection {
 display: flex;
+justify-content: center;
 flex-wrap: wrap;
 list-style: none;
 padding: 0px;
@@ -145,4 +146,11 @@ font-family: 'Source Sans Pro';
     color: #0B0C0C;
     margin: 0px;
     padding: 0px;
+}
+
+
+@media screen and (max-width: 1200px) {
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
 }

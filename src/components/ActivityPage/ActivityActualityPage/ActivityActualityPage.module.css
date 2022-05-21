@@ -186,3 +186,33 @@ font-family: 'Source Sans Pro';
     margin: 0px;
     padding: 0px;
 }
+
+
+
+
+
+
+
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
+}
+
+@media screen and (min-width: 768px) {
+
+.item:nth-child(2n) {
+    margin-right: 0px;
+}
+
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
+}
+
+
+
+
+
+
