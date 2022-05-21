@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" index element={<ActivityHomePage exact />} />
+          <Route index element={<ActivityHomePage exact />} />
           <Route path="/vizia" element={<ActivityViziaPage />} exact />
           <Route path="/actuality" element={<NotFound />} exact />
           <Route path="/actuality/activity" element={<ActivityActualityPage />} exact />
