@@ -68,6 +68,7 @@ font-family: 'Source Sans Pro';
 
 .articlesSection {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     list-style: none;
     padding: 0px;
@@ -188,3 +189,39 @@ font-family: 'Source Sans Pro';
     margin: 0px;
     padding: 0px;
 }
+
+
+@media screen and (max-width: 480px) {
+    .newsForDekstop {
+    display: none;
+}
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .newsForDekstop {
+    display: none;
+}
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
+}
+
+@media screen and (min-width: 768px) {
+.newsForMobile {
+    display: none;
+}
+
+.item:nth-child(2n) {
+    margin-right: 0px;
+}
+
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
+}
+
+
+
+
+
+
