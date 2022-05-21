@@ -195,6 +195,9 @@ font-family: 'Source Sans Pro';
     .newsForDekstop {
     display: none;
 }
+.item:nth-child(3n) {
+    margin-right: 33px;
+}
 }
 
 @media screen and (min-width: 481px) and (max-width: 767px) {
@@ -211,12 +214,12 @@ font-family: 'Source Sans Pro';
     display: none;
 }
 
-.item:nth-child(2n) {
+/* .item:nth-child(2n) {
     margin-right: 0px;
-}
+} */
 
 .item:nth-child(3n) {
-    margin-right: 33px;
+    margin-right: 0px;
 }
 }
 
